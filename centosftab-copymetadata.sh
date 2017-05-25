@@ -74,3 +74,10 @@ mount -a
 # After initial provisioning, use these commands to obtain disk device or UUID of filesystem based on label
 # disk=$(blkid -L ${fslabel})
 # uuid=$(blkid | grep "LABEL=\"${fslabel}\"" | grep -oP '[-a-z0-9]{36}')
+# Install Custom Tetration packages
+
+yum install -y --disablerepo=* --enablerepo=foundation mpmgr;
+yum install -y --disablerepo=* --enablerepo=foundation consul orchestrator ipahelper vault ui-setup rpminstall terraform azmgr;
+
+#Copy local repo config file.
+cp /etc/yum.local.repos.d/local.repo /etc/yum.repos.d;
